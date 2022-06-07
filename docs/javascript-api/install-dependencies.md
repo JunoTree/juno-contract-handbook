@@ -1,13 +1,13 @@
 ---
 layout: default
 title: Javascript API
-parent: 开始
+parent: initialization
 nav_order: 1
 ---
 
-# 安装依赖
+# Install dependencies
 
-执行下面的命令去安装所需的依赖
+Execute the following command to install the required dependencies
 
 ```
 npm i -S @cosmjs/cosmwasm-stargate @cosmjs/stargate cosmwasm

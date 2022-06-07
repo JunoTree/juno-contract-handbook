@@ -1,21 +1,21 @@
 ---
 layout: default
-title: 安装
-parent: 基础操作
+title: installation
+parent: Basic operation
 nav_order: 2
 ---
 
-# 安装
+# Installation
 
 ## Rust
 
-### 安装Rust
+### Install Rust
 
-请参考下面的链接进行Rust的安装
+Please refer to the link below for Rust installation
 
 [https://rustup.rs/](https://rustup.rs/)
 
-### 安装wasm32 target
+### Install wasm32 target
 
 ```
 rustup default stable
@@ -31,11 +31,11 @@ rustup target add wasm32-unknown-unknown
 
 ### Go
 
-你可以参考[official documentation](https://go.dev/doc/install)进行go的安装和设置。 最新版本的`wasmd`需要go的版本是v1.17+。
+You can refer to the [official documentation](https://go.dev/doc/install) for go installation and setup. The latest version of `wasmd` requires go version v1.17+.
 
 ### wasmd
 
-wasmd是CosmWasm平台的工具。
+wasmd is a tool for the CosmWasm platform.
 
 ```
 git clone https://github.com/CosmWasm/wasmd.git
@@ -47,5 +47,5 @@ make install
 wasmd version
 ```
 
-如果你有任何的问题, 请检查你的PATH. `make install`默认会复制`wasmd`到`$HOME/go/bin`, 请确实你已经设置好了PATH.
+If you have any questions, please check your PATH. `make install` will copy `wasmd` to `$HOME/go/bin` by default, make sure you have set your PATH.
 

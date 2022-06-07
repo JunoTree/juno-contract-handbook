@@ -1,28 +1,28 @@
 ---
 layout: default
-title: 保存和查询状态
-parent: 合约开发
+title: Save and query status
+parent: Contract development
 nav_order: 3
 ---
 
-# 保存和查询状态
+# Save and query status
 
-在这个章节里，我们看看如何向合约中保存状态和查询状态。
+In this chapter, we will look at how to save and query state to the contract.
 
-示例代码
+Sample code
 
 https://github.com/JunoTree/cw-handbook/tree/add-state
 
 
-## 1. 在`state.rs`文件中定义状态存储变量
+## 1. Define state storage variables in the `state.rs` file
 
 ```
 pub const NAME: Item<String> = Item::new("name");
 ```
 
-## 2. 定义查询消息
+## 2. Define query message
 
-我们需要在`msg.rs`文件的`QueryMsg`结构中添加`GetName`消息。
+We need to add the `GetName` message to the `QueryMsg` structure in the `msg.rs` file.
 
 ```
 pub enum QueryMsg {
@@ -31,7 +31,7 @@ pub enum QueryMsg {
 }
 ```
 
-并为查询返回结果添加Response数据结构
+And add the Response data structure for the query return result
 
 ```
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
@@ -40,9 +40,9 @@ pub struct NameResponse {
 }
 ```
 
-## 3. 映射消息到方法。
+## 3. Map messages to methods
 
-在`contract.rs`文件的`query`函数中添加消息映射。
+Add a message map in the `query` function of the `contract.rs` file.
 
 ```
 pub fn query(deps: Deps, _env: Env, msg: QueryMsg) -> StdResult<Binary> {
@@ -53,9 +53,9 @@ pub fn query(deps: Deps, _env: Env, msg: QueryMsg) -> StdResult<Binary> {
 }
 ```
 
-## 4. 编写消息处理函数
+## 4. Compile a message handler
 
-在`contract.rs`文件中添加消息处理函数。
+Add message handler functions in `contract.rs` file.
 
 ```
 fn query_name(deps: Deps) -> StdResult<NameResponse> {
@@ -64,9 +64,9 @@ fn query_name(deps: Deps) -> StdResult<NameResponse> {
 }
 ```
 
-## 5. 编译并初始化合约
+## 5. Compile and initialize the contract
 
-我们回到CLI，执行下面的命令。
+We go back to the CLI and execute the following command.
 
 ```
 # Compile
@@ -88,9 +88,9 @@ HELLO='{"hello": {"name": "Jack"}}'
 wasmd tx wasm execute $CONTRACT "$HELLO" --from wallet $TXFLAG -y
 ```
 
-## 6. 查询状态
+## 6. Query status
 
-因为我们定义了名为`GetName`的`QueryMsg`，我们下面可以用`get_name`消息去调用它。
+Since we defined `QueryMsg` named `GetName`, we can invoke it with the `get_name` message below.
 
 ```
 NAME_QUERY='{"get_name": {}}'

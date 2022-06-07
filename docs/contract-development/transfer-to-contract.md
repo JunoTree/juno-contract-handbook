@@ -1,21 +1,21 @@
 ---
 layout: default
-title: 转账到合约
-parent: 合约开发
+title: Transfer to the contract
+parent: Contract development
 nav_order: 4
 ---
 
-# 转账到合约
+# Transfer to contract
 
-在这个章节里，我们看看如何向合约转账。
+In this chapter, we will look at how to transfer money to a contract.
 
-示例代码:
+Sample code:
 
 https://github.com/JunoTree/cw-handbook/tree/transfer-to-contract
 
-## 1. 定义消息
+## 1. Define message
 
-我们需要在`msg.rs`文件的`ExecuteMsg`结构中添加`Desposit`消息。
+We need to add the `Desposit` message in the `ExecuteMsg` structure of the `msg.rs` file.
 
 ```
 pub enum ExecuteMsg {
@@ -24,9 +24,9 @@ pub enum ExecuteMsg {
 }
 ```
 
-## 2. 映射消息到方法。
+## 2. Map messages to methods
 
-在`contract.rs`文件的`execute`函数中添加消息映射。
+Add a message map in the `execute` function of the `contract.rs` file.
 
 ```
 pub fn execute(
@@ -42,9 +42,9 @@ pub fn execute(
 }
 ```
 
-## 3. 编写消息处理函数
+## 3. Compile a message handler
 
-在`contract.rs`文件中添加消息处理函数。
+Add message handler functions in `contract.rs` file.
 
 ```
 use cw_utils::must_pay;
@@ -59,9 +59,9 @@ pub fn deposit(_deps: DepsMut, info: MessageInfo) -> Result<Response, ContractEr
 
 ```
 
-## 4. 编译并初始化合约
+## 4. Compile and initialize the contract
 
-我们回到CLI，执行下面的命令。
+We go back to the CLI and execute the following command.
 
 ```
 # Compile
@@ -81,24 +81,24 @@ wasmd tx wasm instantiate $CODE_ID "$INIT" --from wallet --label "cw-handbook" $
 CONTRACT=$(wasmd query wasm list-contract-by-code $CODE_ID $NODE --output json | jq -r '.contracts[-1]')
 ```
 
-## 5. 调用函数
+## 5. Invoke function
 
-因为我们定义了名为`Deposit`的`ExecuteMsg`，我们下面可以用`deposit`消息去调用它。
+Since we defined `ExecuteMsg` named `Deposit`, we can invoke it with the `deposit` message below.
 
-**这里很重要的是使用了`--amount`参数去向合约进行转账。**
+**Please note here is to use the `--amount` parameter to transfer money to the contract. **
 
 ```
 DEPOSIT='{"deposit": {}}'
 wasmd tx wasm execute $CONTRACT "$DEPOSIT" --amount 100000upebble --from wallet $TXFLAG -y
 ```
 
-## 6. 查询合约余额
+## 6. Query the contract balance
 
 ```
 wasmd query bank balances $CONTRACT $NODE
 ```
 
-输出：
+Output：
 
 ```
 balances:

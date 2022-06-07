@@ -1,27 +1,27 @@
 ---
 layout: default
-title: 设置开发环境
-parent: 基础操作
+title: Set up the development environment
+parent: Basic operation
 nav_order: 1
 ---
 
-# 设置开发环境
+# Set up the development environment
 
-## 设置链环境变量
+## Set chain environment variables
 
-我们将配置和使用cliffnet-1作为开发和测试的环境。
+We will configure and use cliffnet-1 as the development and testing environment.
 
-cliffnet-1是一个用来开发和测试cosmwasm合约的链，它的token单位是`PEBBLE`, 单位是`upebble`。1 `PEBBLE` = 1000000 `upebble`。
+cliffnet-1 is a chain for developing and testing cosmwasm contracts, its token unit is `PEBBLE`, and the unit is `upebble`. 1 `PEBBLE` = 1000000 `upebble`.
 
-块链浏览器URL： https://block-explorer.cliffnet.cosmwasm.com
+Blockchain browser URL： https://block-explorer.cliffnet.cosmwasm.com
 
-我们使用curl获取cliffnet-1测试网的环境配置变量，并将它们设置到本机。wasmd的命令将使用到这些环境变量。
+We utilize curl to acquire the environment configuration variables of the cliffnet-1 testnet and configure them to the current equipment. The wasmd commands will apply the environment variables.
 
 ```
 source <(curl -sSL https://raw.githubusercontent.com/CosmWasm/testnets/master/cliffnet-1/defaults.env)
 ```
 
-`https://raw.githubusercontent.com/CosmWasm/testnets/master/cliffnet-1/defaults.env`的内容如下：
+The content of `https://raw.githubusercontent.com/CosmWasm/testnets/master/cliffnet-1/defaults.env` is as follows
 ```
 export CHAIN_ID="cliffnet-1"
 ...
@@ -34,18 +34,18 @@ export NODE=(--node $RPC)
 export TXFLAG=($NODE --chain-id $CHAIN_ID --gas-prices 0.025upebble --gas auto --gas-adjustment 1.3)
 ```
 
-可以看出，它包括了一些环境变量。
+As you can see, it includes some environment variables.
 
-## 设置钱包
+## Set up wallet
 
-创建两个钱包，分别称为wallet, wallet2。
+Create two wallets, called wallet, wallet2 separately.
 
 ```
 wasmd keys add wallet
 wasmd keys add wallet2
 ```
 
-输出如下：
+The output is as follows
 
 ```
 - name: wallet
@@ -61,26 +61,26 @@ It is the only way to recover your account if you ever forget your password.
 midnight traffic ginger silent once vocal frost silent match cart mistake cancel country foster lunch swamp setup actual dilemma suffer print beef enjoy nest
 ```
 
-## 获取一些测试网token
+## Acquire some tokens from the testnet
 
-接着，我们用wallet,钱包向测试网请求一些token。
+Next, we use wallet to request some tokens from the testnet.
 
 ```
 JSON=$(jq -n --arg addr $(wasmd keys show -a wallet) '{"denom":"upebble","address":$addr}') && curl -X POST --header "Content-Type: application/json" --data "$JSON" https://faucet.cliffnet.cosmwasm.com/credit
 ```
 
-在上面的命令中：
-1. 使用`wasmd keys show -a wallet`获得wallet钱包地址。
-2. 使用`jq`命令，将钱包地址作为`addr`变量设置到`{"denom":"upebble","address":$addr}`中。结果如下：`{"denom":"upebble","address":"wasm1evvnsrte3rdghy506vu4c87x0s5wx0hpppqdd6"}`，将它赋值到`JSON`变量中。
-3. 以`JSON`作为请求参数，使用curl向https://faucet.cliffnet.cosmwasm.com/credit发送POST请求。
+In the above command:
+1. Apply `wasmd keys show -a wallet` to get the wallet address.
+2. Apply the `jq` command to set the wallet address as the `addr` variable to `{"denom":"upebble","address":$addr}`. The result is as follows: `{"denom":"upebble","address":"wasm1evvnsrte3rdghy506vu4c87x0s5wx0hpppqdd6"}`, assign it to the `JSON` variable.
+3. Applying `JSON` as the request parameter, use curl to send a POST request to https://faucet.cliffnet.cosmwasm.com/credit.
 
-同理，使用wallet2钱包向测试网请求一些token。
+Similarly, use the wallet2 to request some tokens from the testnet.
 
 ```
 JSON=$(jq -n --arg addr $(wasmd keys show -a wallet2) '{"denom":"upebble","address":$addr}') && curl -X POST --header "Content-Type: application/json" --data "$JSON" https://faucet.cliffnet.cosmwasm.com/credit
 ```
 
-## 查询钱包余额
+## Check wallet balance
 
 ```
 ADDR=$(wasmd keys show -a wallet) && wasmd query bank balances $ADDR $NODE
@@ -95,7 +95,7 @@ balances:
 pagination: {}
 ```
 
-你也可以通过区块链浏览器进行查询。
+You can also query the balance through the blockchain browser.
 
 ![explorer](/assets/images/setup-development-environment/explorer.png)
 

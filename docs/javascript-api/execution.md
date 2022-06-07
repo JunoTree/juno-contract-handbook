@@ -1,13 +1,13 @@
 ---
 layout: default
-title: 合约的执行
+title: Contract execution
 parent: Javascript API
 nav_order: 3
 ---
 
-# 合约的执行
+# Contract execution
 
-调用一个合约的API
+Invoke an API of contract
 
 ```
 const executionParams = {resolve_record: {name: 'fred'}};

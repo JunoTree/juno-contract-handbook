@@ -1,15 +1,15 @@
 ---
 layout: default
-title: 查询
+title: query
 parent: Javascript API
 nav_order: 4
 ---
 
-# 查询
+# Query
 
-## 查询合约状态
+## Query contract status
 
-## 查询余额
+## Check balances
 
 ```
 client.getBalance(account.address, TOKEN_SYMBOL);

@@ -1,21 +1,21 @@
 ---
 layout: default
-title: 上传合约到链上
-parent: 基础操作
+title: Uploading the contract to the chain
+parent: Basic operation
 nav_order: 3
 ---
 
-# 上传合约到链上
+# Uploading the contract to the chain
 
-## 1. 上传合约
+## 1. Upload the contract
 
 ```
 RES=$(wasmd tx wasm store artifacts/cw_nameservice.wasm --from wallet $TXFLAG -y --output json -b block)
 ```
 
-## 2. 获得CODE_ID
+## 2. Get CODE_ID
 
-在上传wasm文件后，CODE_ID是这个wasm程序在链上的ID。
+After uploading the wasm file, CODE_ID is the ID of the wasm program on the chain.
 
 ```
 CODE_ID=$(echo $RES | jq -r '.logs[0].events[-1].attributes[0].value')
