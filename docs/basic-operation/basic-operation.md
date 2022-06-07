@@ -1,6 +1,6 @@
 ---
 layout: default
-title: basic operation
+title: Basic operation
 nav_order: 3
 has_children: true
 permalink: /docs/basic-operation
