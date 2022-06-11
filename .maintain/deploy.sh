@@ -27,3 +27,6 @@ cp -rf _site _deploy/kr
 git checkout lang-jp
 bundle exec jekyll build
 cp -rf _site _deploy/jp
+
+# Checkout to main
+git checkout main
