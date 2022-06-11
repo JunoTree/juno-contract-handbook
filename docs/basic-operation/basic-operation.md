@@ -3,7 +3,7 @@ layout: default
 title: Basic operation
 nav_order: 3
 has_children: true
-permalink: /docs/basic-operation
+permalink: /docs/basic
 ---
 
 # Basic Operation

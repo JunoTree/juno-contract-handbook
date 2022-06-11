@@ -3,7 +3,7 @@ layout: default
 title: Javascript API
 nav_order: 5
 has_children: true
-permalink: /docs/javascript-api
+permalink: /docs/javascript
 ---
 
 # Javascript API
