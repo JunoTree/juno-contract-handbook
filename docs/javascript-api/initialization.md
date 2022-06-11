@@ -1,13 +1,13 @@
 ---
 layout: default
-title: 初始化
+title: 初期化
 parent: Javascript API
 nav_order: 2
 ---
 
-# 初始化
+# 初期化
 
-## 导入cosmjs库
+## cosmjsをインポートする
 
 ```
 import { makeCosmoshubPath } from "@cosmjs/amino";
@@ -16,7 +16,7 @@ import { assertIsDeliverTxSuccess, calculateFee, GasPrice } from "@cosmjs/starga
 import { SigningCosmWasmClient } from "@cosmjs/cosmwasm-stargate";
 ```
 
-## 设置与合约交互所需的变量
+## 契約とのやり取りに必要な変数を設定します
 
 ```
 const RPC_ENDPOINT = 'https://rpc.cliffnet.cosmwasm.com:443';

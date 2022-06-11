@@ -1,15 +1,15 @@
 ---
 layout: default
-title: 查询
+title: お問い合わせ
 parent: Javascript API
 nav_order: 4
 ---
 
-# 查询
+# お問い合わせ
 
-## 查询合约状态
+## 契約状況の照会
 
-## 查询余额
+## 残高を確認する
 
 ```
 client.getBalance(account.address, TOKEN_SYMBOL);

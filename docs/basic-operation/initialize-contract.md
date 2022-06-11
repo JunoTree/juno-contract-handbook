@@ -1,15 +1,15 @@
 ---
 layout: default
-title: 初始化合约
-parent: 基础操作
+title: 契約を初期化する
+parent: 基本操作
 nav_order: 4
 ---
 
-# 初始化合约
+# 契約を初期化する
 
-## 初始化合约
+## 契約を初期化する
 
-因为合约的初始化消息定义如下，它包含了一个count参数。
+コントラクトの初期化メッセージは次のように定義されているため、カウントパラメータが含まれています。
 
 ```
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
@@ -18,7 +18,7 @@ pub struct InstantiateMsg {
 }
 ```
 
-我们根据这个结构去调用它。
+この構造に従って呼んでいます。
 
 ```
 # Get wallet address
@@ -31,7 +31,7 @@ INIT='{"count": 0}'
 wasmd tx wasm instantiate $CODE_ID "$INIT" --from wallet --label "cw-handbook" $TXFLAG -y --admin $ADDR
 ```
 
-## 查询合约地址
+## 契約アドレスを照会する
 
 ```
 # check the contract state (and account balance)
@@ -40,7 +40,7 @@ CONTRACT=$(wasmd query wasm list-contract-by-code $CODE_ID $NODE --output json |
 echo $CONTRACT
 ```
 
-## 查询合约地址的状态和余额
+## 契約アドレスのステータスと残高を照会する
 
 ```
 wasmd query wasm contract $CONTRACT $NODE

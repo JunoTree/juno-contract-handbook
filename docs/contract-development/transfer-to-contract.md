@@ -1,21 +1,21 @@
 ---
 layout: default
-title: 转账到合约
-parent: 合约开发
+title: 契約への転送
+parent: 契約開発
 nav_order: 4
 ---
 
-# 转账到合约
+# 契約への転送
 
-在这个章节里，我们看看如何向合约转账。
+この章では、契約に送金する方法について説明します。
 
-示例代码:
+サンプルコード：
 
 https://github.com/JunoTree/cw-handbook/tree/transfer-to-contract
 
-## 1. 定义消息
+## 1. メッセージを定義する
 
-我们需要在`msg.rs`文件的`ExecuteMsg`结构中添加`Desposit`消息。
+`msg.rs`ファイルの`ExecuteMsg`構造に`Desposit`メッセージを追加する必要があります。
 
 ```
 pub enum ExecuteMsg {
@@ -24,9 +24,9 @@ pub enum ExecuteMsg {
 }
 ```
 
-## 2. 映射消息到方法。
+## 2. メッセージをメソッドにマップします。
 
-在`contract.rs`文件的`execute`函数中添加消息映射。
+`contract.rs`ファイルの`execute`関数にメッセージマップを追加します。
 
 ```
 pub fn execute(
@@ -42,9 +42,9 @@ pub fn execute(
 }
 ```
 
-## 3. 编写消息处理函数
+## 3. メッセージハンドラーを作成する
 
-在`contract.rs`文件中添加消息处理函数。
+`contract.rs`ファイルにメッセージハンドラ関数を追加します。
 
 ```
 use cw_utils::must_pay;
@@ -59,9 +59,9 @@ pub fn deposit(_deps: DepsMut, info: MessageInfo) -> Result<Response, ContractEr
 
 ```
 
-## 4. 编译并初始化合约
+## 4. コントラクトをコンパイルして初期化します
 
-我们回到CLI，执行下面的命令。
+CLIに戻り、次のコマンドを実行します。
 
 ```
 # Compile
@@ -81,24 +81,24 @@ wasmd tx wasm instantiate $CODE_ID "$INIT" --from wallet --label "cw-handbook" $
 CONTRACT=$(wasmd query wasm list-contract-by-code $CODE_ID $NODE --output json | jq -r '.contracts[-1]')
 ```
 
-## 5. 调用函数
+## 5. 関数を呼び出す
 
-因为我们定义了名为`Deposit`的`ExecuteMsg`，我们下面可以用`deposit`消息去调用它。
+`Deposit`という名前の`ExecuteMsg`を定義したので、以下の`deposit`メッセージで呼び出すことができます。
 
-**这里很重要的是使用了`--amount`参数去向合约进行转账。**
+**ここで重要なのは、`--amount`パラメータを使用してお金を契約に送金することです。**
 
 ```
 DEPOSIT='{"deposit": {}}'
 wasmd tx wasm execute $CONTRACT "$DEPOSIT" --amount 100000upebble --from wallet $TXFLAG -y
 ```
 
-## 6. 查询合约余额
+## 6. 契約残高を確認する
 
 ```
 wasmd query bank balances $CONTRACT $NODE
 ```
 
-输出：
+出力：
 
 ```
 balances:

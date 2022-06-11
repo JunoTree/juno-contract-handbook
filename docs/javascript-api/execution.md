@@ -1,13 +1,13 @@
 ---
 layout: default
-title: 合约的执行
+title: 契約の履行
 parent: Javascript API
 nav_order: 3
 ---
 
-# 合约的执行
+# 契約の履行
 
-调用一个合约的API
+コントラクトのAPIを呼び出す
 
 ```
 const executionParams = {resolve_record: {name: 'fred'}};

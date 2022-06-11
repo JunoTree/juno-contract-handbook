@@ -1,15 +1,15 @@
 ---
 layout: default
-title: Juno合约手册
+title: Juno開発マニュアル
 nav_order: 1
-description: "Juno合约入门引导"
+description: "Junoコントラクトの開始"
 permalink: /
 ---
 
-# Juno合约手册
+# Juno開発マニュアル
 
-本手册旨在为有一定Rust语言基础并想开始Cosmwasm的学习或者为Juno网络开发合约的开发者提供一个入门引导教程。
+このマニュアルは、特定のRust言語の基礎を持ち、Cosmwasmの学習を開始したり、Junoネットワークの契約を作成したりする開発者向けの入門チュートリアルを提供することを目的としています。
 
-进一步学习，请参考: [https://docs.cosmwasm.com/docs/1.0/](https://docs.cosmwasm.com/docs/1.0/)。
+詳細については、[https://docs.cosmwasm.com/docs/1.0/]（https://docs.cosmwasm.com/docs/1.0/）を参照してください。
 
-关于教程有任何疑问，欢迎到[discord](https://discord.com/channels/816256689078403103/976825389173317642)讨论。
+チュートリアルについて質問がある場合は、[discord]（https://discord.com/channels/816256689078403103/976825389173317642）にようこそ。

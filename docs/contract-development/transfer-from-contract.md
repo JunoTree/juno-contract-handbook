@@ -1,21 +1,21 @@
 ---
 layout: default
-title: 从合约转账
-parent: 合约开发
+title: 契約からの転送
+parent: 契約開発
 nav_order: 5
 ---
 
-# 从合约转账
+# 契約からの転送
 
-在这个章节里，我们看看如何从合约转账。
+この章では、契約から送金する方法について説明します。
 
-示例代码:
+サンプルコード：
 
 https://github.com/JunoTree/cw-handbook/tree/transfer-from-contract
 
-## 1. 定义消息
+## 1. メッセージを定義する
 
-我们需要在`msg.rs`文件的`ExecuteMsg`结构中添加`Withdraw`消息。
+`msg.rs`ファイルの`ExecuteMsg`構造に`Withdraw`メッセージを追加する必要があります。
 
 ```
 use cosmwasm_std::Uint128;
@@ -27,9 +27,9 @@ pub enum ExecuteMsg {
 }
 ```
 
-## 2. 映射消息到方法。
+## 2. メッセージをメソッドにマップします。
 
-在`contract.rs`文件的`execute`函数中添加消息映射。
+`contract.rs`ファイルの`execute`関数にメッセージマップを追加します。
 
 ```
 pub fn execute(
@@ -45,12 +45,12 @@ pub fn execute(
 }
 ```
 
-## 3. 编写消息处理函数
+## 3. メッセージハンドラーを作成する
 
-在`contract.rs`文件中添加消息处理函数。
+`contract.rs`ファイルにメッセージハンドラ関数を追加します。
 
 
-在处理函数中，在返回中添加一个消息，BankMsg::Send。它实现了合约转账到用户的功能。
+ハンドラー関数で、戻り値BankMsg::Sendにメッセージを追加します。 契約をユーザーに転送する機能を実装しています。
 
 ```
 use cw_utils::must_pay;
@@ -64,9 +64,9 @@ pub fn withdraw(_deps: DepsMut, info: MessageInfo, amount: Uint128) -> Result<Re
 }
 ```
 
-## 4. 编译并初始化合约
+## 4. コントラクトをコンパイルして初期化します
 
-我们回到CLI，执行下面的命令。
+CLIに戻り、次のコマンドを実行します。
 
 ```
 # Compile
@@ -86,9 +86,9 @@ wasmd tx wasm instantiate $CODE_ID "$INIT" --from wallet --label "cw-handbook" $
 CONTRACT=$(wasmd query wasm list-contract-by-code $CODE_ID $NODE --output json | jq -r '.contracts[-1]')
 ```
 
-## 5. 调用函数
+## 5. 関数を呼び出す
 
-因为我们定义了名为`Withdraw`的`ExecuteMsg`，我们下面可以用`withdraw`消息去调用它。
+`Withdraw`という名前の`ExecuteMsg`を定義したので、以下の`withdraw`メッセージで呼び出すことができます。
 
 ```
 # Deposit to contract
