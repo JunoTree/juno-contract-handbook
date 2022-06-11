@@ -1,15 +1,15 @@
 ---
 layout: default
-title: 查询
+title: 查詢
 parent: Javascript API
 nav_order: 4
 ---
 
-# 查询
+# 查詢
 
-## 查询合约状态
+## 查詢合約狀態
 
-## 查询余额
+## 查詢余額
 
 ```
 client.getBalance(account.address, TOKEN_SYMBOL);

@@ -1,15 +1,15 @@
 ---
 layout: default
-title: 初始化合约
-parent: 基础操作
+title: 初始化合約
+parent: 基礎操作
 nav_order: 4
 ---
 
-# 初始化合约
+# 初始化合約
 
-## 初始化合约
+## 初始化合約
 
-因为合约的初始化消息定义如下，它包含了一个count参数。
+因為合約的初始化消息定義如下，它包含了一個count參數。
 
 ```
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
@@ -18,7 +18,7 @@ pub struct InstantiateMsg {
 }
 ```
 
-我们根据这个结构去调用它。
+我們根據這個結構去調用它。
 
 ```
 # Get wallet address
@@ -31,7 +31,7 @@ INIT='{"count": 0}'
 wasmd tx wasm instantiate $CODE_ID "$INIT" --from wallet --label "cw-handbook" $TXFLAG -y --admin $ADDR
 ```
 
-## 查询合约地址
+## 查詢合約地址
 
 ```
 # check the contract state (and account balance)
@@ -40,7 +40,7 @@ CONTRACT=$(wasmd query wasm list-contract-by-code $CODE_ID $NODE --output json |
 echo $CONTRACT
 ```
 
-## 查询合约地址的状态和余额
+## 查詢合約地址的狀態和余額
 
 ```
 wasmd query wasm contract $CONTRACT $NODE

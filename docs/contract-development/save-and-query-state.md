@@ -1,28 +1,28 @@
 ---
 layout: default
-title: 保存和查询状态
-parent: 合约开发
+title: 保存和查詢狀態
+parent: 合約開發
 nav_order: 3
 ---
 
-# 保存和查询状态
+# 保存和查詢狀態
 
-在这个章节里，我们看看如何向合约中保存状态和查询状态。
+在這個章節裏，我們看看如何向合約中保存狀態和查詢狀態。
 
-示例代码
+示例代碼
 
 https://github.com/JunoTree/cw-handbook/tree/add-state
 
 
-## 1. 在`state.rs`文件中定义状态存储变量
+## 1. 在`state.rs`文件中定義狀態存儲變量
 
 ```
 pub const NAME: Item<String> = Item::new("name");
 ```
 
-## 2. 定义查询消息
+## 2. 定義查詢消息
 
-我们需要在`msg.rs`文件的`QueryMsg`结构中添加`GetName`消息。
+我們需要在`msg.rs`文件的`QueryMsg`結構中添加`GetName`消息。
 
 ```
 pub enum QueryMsg {
@@ -31,7 +31,7 @@ pub enum QueryMsg {
 }
 ```
 
-并为查询返回结果添加Response数据结构
+並為查詢返回結果添加Response數據結構
 
 ```
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
@@ -42,7 +42,7 @@ pub struct NameResponse {
 
 ## 3. 映射消息到方法。
 
-在`contract.rs`文件的`query`函数中添加消息映射。
+在`contract.rs`文件的`query`函數中添加消息映射。
 
 ```
 pub fn query(deps: Deps, _env: Env, msg: QueryMsg) -> StdResult<Binary> {
@@ -53,9 +53,9 @@ pub fn query(deps: Deps, _env: Env, msg: QueryMsg) -> StdResult<Binary> {
 }
 ```
 
-## 4. 编写消息处理函数
+## 4. 編寫消息處理函數
 
-在`contract.rs`文件中添加消息处理函数。
+在`contract.rs`文件中添加消息處理函數。
 
 ```
 fn query_name(deps: Deps) -> StdResult<NameResponse> {
@@ -64,9 +64,9 @@ fn query_name(deps: Deps) -> StdResult<NameResponse> {
 }
 ```
 
-## 5. 编译并初始化合约
+## 5. 編譯並初始化合約
 
-我们回到CLI，执行下面的命令。
+我們回到CLI，執行下面的命令。
 
 ```
 # Compile
@@ -88,9 +88,9 @@ HELLO='{"hello": {"name": "Jack"}}'
 wasmd tx wasm execute $CONTRACT "$HELLO" --from wallet $TXFLAG -y
 ```
 
-## 6. 查询状态
+## 6. 查詢狀態
 
-因为我们定义了名为`GetName`的`QueryMsg`，我们下面可以用`get_name`消息去调用它。
+因為我們定義了名為`GetName`的`QueryMsg`，我們下面可以用`get_name`消息去調用它。
 
 ```
 NAME_QUERY='{"get_name": {}}'

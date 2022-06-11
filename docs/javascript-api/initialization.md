@@ -7,7 +7,7 @@ nav_order: 2
 
 # 初始化
 
-## 导入cosmjs库
+## 導入cosmjs庫
 
 ```
 import { makeCosmoshubPath } from "@cosmjs/amino";
@@ -16,7 +16,7 @@ import { assertIsDeliverTxSuccess, calculateFee, GasPrice } from "@cosmjs/starga
 import { SigningCosmWasmClient } from "@cosmjs/cosmwasm-stargate";
 ```
 
-## 设置与合约交互所需的变量
+## 設置與合約交互所需的變量
 
 ```
 const RPC_ENDPOINT = 'https://rpc.cliffnet.cosmwasm.com:443';
