@@ -3,7 +3,7 @@ layout: default
 title: 基础操作
 nav_order: 3
 has_children: true
-permalink: /docs/basic-operation
+permalink: /docs/basic
 ---
 
 # 基础操作
