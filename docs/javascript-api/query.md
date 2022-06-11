@@ -5,11 +5,11 @@ parent: Javascript API
 nav_order: 4
 ---
 
-# 查询
+# 문의
 
-## 查询合约状态
+## 계약 상태 조회
 
-## 查询余额
+## 잔액 확인
 
 ```
 client.getBalance(account.address, TOKEN_SYMBOL);

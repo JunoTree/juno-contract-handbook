@@ -1,27 +1,27 @@
 ---
 layout: default
-title: 设置开发环境
-parent: 基础操作
+title: 개발 환경 설정
+parent: 기본 동작
 nav_order: 1
 ---
 
-# 设置开发环境
+# 개발 환경 설정
 
-## 设置链环境变量
+## 체인 환경 변수 설정
 
-我们将配置和使用cliffnet-1作为开发和测试的环境。
+Cliffnet-1을 개발 및 테스트를 위한 환경으로 구성하고 사용할 것입니다.
 
-cliffnet-1是一个用来开发和测试cosmwasm合约的链，它的token单位是`PEBBLE`, 单位是`upebble`。1 `PEBBLE` = 1000000 `upebble`。
+Cliffnet-1은 cosmwasm 계약을 개발 및 테스트하기 위한 체인으로, 토큰 단위는 `PEBBLE`, 단위는 `upebble`입니다. 1 `PEBBLE` = 1000000 `upebble`.
 
-块链浏览器URL： https://block-explorer.cliffnet.cosmwasm.com
+블록체인 익스플로러 URL: https://block-explorer.cliffnet.cosmwasm.com
 
-我们使用curl获取cliffnet-1测试网的环境配置变量，并将它们设置到本机。wasmd的命令将使用到这些环境变量。
+curl을 사용하여 Cliffnet-1 테스트넷에 대한 환경 구성 변수를 가져와 이 시스템에 설정합니다. 이러한 환경 변수는 wasmd 명령에서 사용됩니다.
 
 ```
 source <(curl -sSL https://raw.githubusercontent.com/CosmWasm/testnets/master/cliffnet-1/defaults.env)
 ```
 
-`https://raw.githubusercontent.com/CosmWasm/testnets/master/cliffnet-1/defaults.env`的内容如下：
+`https://raw.githubusercontent.com/CosmWasm/testnets/master/cliffnet-1/defaults.env`의 내용은 다음과 같습니다.
 ```
 export CHAIN_ID="cliffnet-1"
 ...
@@ -34,18 +34,18 @@ export NODE=(--node $RPC)
 export TXFLAG=($NODE --chain-id $CHAIN_ID --gas-prices 0.025upebble --gas auto --gas-adjustment 1.3)
 ```
 
-可以看出，它包括了一些环境变量。
+보시다시피 일부 환경 변수가 포함되어 있습니다.
 
-## 设置钱包
+## 지갑 설정
 
-创建两个钱包，分别称为wallet, wallet2。
+wallet, wallet2이라는 두 개의 지갑을 만듭니다.
 
 ```
 wasmd keys add wallet
 wasmd keys add wallet2
 ```
 
-输出如下：
+출력은 다음과 같습니다.
 
 ```
 - name: wallet
@@ -61,26 +61,26 @@ It is the only way to recover your account if you ever forget your password.
 midnight traffic ginger silent once vocal frost silent match cart mistake cancel country foster lunch swamp setup actual dilemma suffer print beef enjoy nest
 ```
 
-## 获取一些测试网token
+## 테스트넷 token 가져오기
 
-接着，我们用wallet,钱包向测试网请求一些token。
+다음으로, 지갑인 wallet을 사용하여 테스트넷에서 일부 token을 요청합니다.
 
 ```
 JSON=$(jq -n --arg addr $(wasmd keys show -a wallet) '{"denom":"upebble","address":$addr}') && curl -X POST --header "Content-Type: application/json" --data "$JSON" https://faucet.cliffnet.cosmwasm.com/credit
 ```
 
-在上面的命令中：
-1. 使用`wasmd keys show -a wallet`获得wallet钱包地址。
-2. 使用`jq`命令，将钱包地址作为`addr`变量设置到`{"denom":"upebble","address":$addr}`中。结果如下：`{"denom":"upebble","address":"wasm1evvnsrte3rdghy506vu4c87x0s5wx0hpppqdd6"}`，将它赋值到`JSON`变量中。
-3. 以`JSON`作为请求参数，使用curl向https://faucet.cliffnet.cosmwasm.com/credit发送POST请求。
+위의 명령에서:
+1. 지갑 지갑 주소를 얻으려면 `wasmd keys show -wallet`을 사용하세요.
+2. `jq` 명령을 사용하여 지갑 주소를 `addr` 변수로 `{"denom":"upebble","address":$addr}`에 설정합니다. 결과는 다음과 같습니다. `{"denom":"upebble","address":"wasm1evvnsrte3rdghy506vu4c87x0s5wx0hpppqdd6"}`, `JSON` 변수에 할당합니다.
+3.  curl을 사용하여 `JSON`을 요청 매개변수로 사용하여 https://faucet.cliffnet.cosmwasm.com/credit에 POST 요청을 보냅니다.
 
-同理，使用wallet2钱包向测试网请求一些token。
+마찬가지로 wallet2 지갑을 사용하여 테스트넷에서 일부 토큰을 요청합니다.
 
 ```
 JSON=$(jq -n --arg addr $(wasmd keys show -a wallet2) '{"denom":"upebble","address":$addr}') && curl -X POST --header "Content-Type: application/json" --data "$JSON" https://faucet.cliffnet.cosmwasm.com/credit
 ```
 
-## 查询钱包余额
+## 지갑 잔액 확인
 
 ```
 ADDR=$(wasmd keys show -a wallet) && wasmd query bank balances $ADDR $NODE
@@ -95,7 +95,7 @@ balances:
 pagination: {}
 ```
 
-你也可以通过区块链浏览器进行查询。
+블록체인 브라우저를 통해 쿼리할 수도 있습니다.
 
 ![explorer](/assets/images/setup-development-environment/explorer.png)
 

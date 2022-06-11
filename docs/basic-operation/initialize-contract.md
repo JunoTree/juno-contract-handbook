@@ -1,15 +1,15 @@
 ---
 layout: default
-title: 初始化合约
-parent: 基础操作
+title: 계약 초기화
+parent: 기본 동작
 nav_order: 4
 ---
 
-# 初始化合约
+# 계약 초기화
 
-## 初始化合约
+## 계약 초기화
 
-因为合约的初始化消息定义如下，它包含了一个count参数。
+계약의 초기화 메시지는 다음과 같이 정의되어 있으므로 count 매개변수를 포함합니다.
 
 ```
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
@@ -18,7 +18,7 @@ pub struct InstantiateMsg {
 }
 ```
 
-我们根据这个结构去调用它。
+이 구조에 따라 호출합니다.
 
 ```
 # Get wallet address
@@ -31,7 +31,7 @@ INIT='{"count": 0}'
 wasmd tx wasm instantiate $CODE_ID "$INIT" --from wallet --label "cw-handbook" $TXFLAG -y --admin $ADDR
 ```
 
-## 查询合约地址
+## 쿼리 계약 주소
 
 ```
 # check the contract state (and account balance)
@@ -40,7 +40,7 @@ CONTRACT=$(wasmd query wasm list-contract-by-code $CODE_ID $NODE --output json |
 echo $CONTRACT
 ```
 
-## 查询合约地址的状态和余额
+## 계약 주소의 상태 및 잔액 조회
 
 ```
 wasmd query wasm contract $CONTRACT $NODE

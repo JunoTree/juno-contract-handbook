@@ -1,23 +1,23 @@
 ---
 layout: default
-title: 合约执行
-parent: 合约开发
+title: 계약 실행
+parent: 계약 개발
 nav_order: 2
 ---
 
-# 合约执行
+# 계약 실행
 
-在这个章节里，我们看看如何向合约中添加一个可调用的函数，并执行它。
+이 장에서는 호출 가능한 함수를 계약에 추가하고 실행하는 방법을 살펴봅니다.
 
-示例代码
+샘플 코드
 
 https://github.com/JunoTree/cw-handbook/tree/add-hello-function
 
-## 1. 定义消息
+## 1. 메시지 정의
 
-`msg.rs`是所有消息定义的地方，包括InstantiateMsg，ExecuteMsg，QueryMsg。
+`msg.rs`는 InstantiateMsg, ExecuteMsg, QueryMsg를 포함한 모든 메시지가 정의되는 곳입니다.
 
-我们需要在`msg.rs`文件的`ExecuteMsg`结构中添加`Hello`消息。
+`msg.rs` 파일의 `ExecuteMsg` 구조에 `Hello` 메시지를 추가해야 합니다.
 
 ```
 pub enum ExecuteMsg {
@@ -26,9 +26,9 @@ pub enum ExecuteMsg {
 }
 ```
 
-## 2. 映射消息到方法。
+## 2. 메시지를 메서드에 매핑합니다.
 
-在`contract.rs`文件的`execute`函数中添加消息映射。
+`contract.rs` 파일의 `execute` 기능에 메시지 맵을 추가합니다.
 
 ```
 pub fn execute(
@@ -44,9 +44,9 @@ pub fn execute(
 }
 ```
 
-## 3. 编写消息处理函数
+## 3. 메시지 핸들러 작성
 
-在`contract.rs`文件中添加消息处理函数。
+`contract.rs` 파일에 메시지 처리기 기능을 추가합니다.
 
 ```
 pub fn hello(_deps: DepsMut) -> Result<Response, ContractError> {
@@ -57,9 +57,9 @@ pub fn hello(_deps: DepsMut) -> Result<Response, ContractError> {
 }
 ```
 
-## 4. 编译并初始化合约
+## 4. 계약 컴파일 및 초기화
 
-我们回到CLI，执行下面的命令。
+CLI로 돌아가서 다음 명령을 실행합니다.
 
 ```
 # Compile
@@ -79,9 +79,9 @@ wasmd tx wasm instantiate $CODE_ID "$INIT" --from wallet --label "cw-handbook" $
 CONTRACT=$(wasmd query wasm list-contract-by-code $CODE_ID $NODE --output json | jq -r '.contracts[-1]')
 ```
 
-## 5. 调用函数
+## 5. 함수 호출
 
-因为我们定义了名为`Hello`的`ExecuteMsg`，我们下面可以用`hello`消息去调用它。
+`ExecuteMsg`를 `Hello`라는 이름으로 정의했으므로 아래의 `hello` 메시지와 함께 호출할 수 있습니다.
 
 ```
 HELLO='{"hello": {"name": "Jack"}}'

@@ -1,24 +1,24 @@
 ---
 layout: default
-title: 创建工程
-parent: 合约开发
+title: 프로젝트 생성
+parent: 계약 개발
 nav_order: 1
 ---
 
-# 创建工程
+# 프로젝트 생성
 
-## 安装crate
+## 설치crate
 
-安装用于创建工程的crate
+프로젝트 생성을 위해 crate 설치
 
 ```
 cargo install cargo-generate --features vendored-openssl
 cargo install cargo-run-script
 ```
 
-## 创建工程
+## 프로젝트 생성
 
-下面的命令会基于模板（https://github.com/CosmWasm/cw-template.git）去创建一个工程
+다음 명령은 템플릿(https://github.com/CosmWasm/cw-template.git)을 기반으로 프로젝트를 생성합니다.
 
 ```
 cargo generate --git https://github.com/CosmWasm/cw-template.git --name cw-handbook

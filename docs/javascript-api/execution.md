@@ -1,13 +1,13 @@
 ---
 layout: default
-title: 合约的执行
+title: 계약의 실행
 parent: Javascript API
 nav_order: 3
 ---
 
-# 合约的执行
+# 계약의 실행
 
-调用一个合约的API
+계약의 API 호출
 
 ```
 const executionParams = {resolve_record: {name: 'fred'}};

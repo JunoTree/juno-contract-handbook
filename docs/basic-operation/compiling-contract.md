@@ -1,13 +1,13 @@
 ---
 layout: default
-title: 编译合约
-parent: 基础操作
+title: 계약 컴파일
+parent: 기본 동작
 nav_order: 2
 ---
 
-# 编译合约
+# 계약 컴파일
 
-我们先下载cw-handbook代码作为例子。
+먼저 cw-handbook 코드를 예제로 다운로드해 보겠습니다.
 
 ```
 # get the code
@@ -16,7 +16,7 @@ cd cw-handbook
 git checkout create-project
 ```
 
-编译合约（请确保docker已在你的系统中安装）
+계약 컴파일(시스템에 docker이 설치되어 있는지 확인)
 
 ```
 RUSTFLAGS='-C link-arg=-s' cargo wasm
