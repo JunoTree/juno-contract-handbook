@@ -14,7 +14,7 @@ bundle exec jekyll build
 cp -rf _site _deploy/zh-cn
 
 # zh-tw
-git checkout lang-tw
+git checkout lang-zh-tw
 bundle exec jekyll build
 cp -rf _site _deploy/zh-tw
 
