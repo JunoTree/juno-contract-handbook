@@ -1,11 +1,11 @@
-# git pull
+git pull
 
-# mkdir -p _deploy
-# rm -rf _deploy/*
+mkdir -p _deploy
+rm -rf _deploy/*
 
-# #en
-# git checkout lang-en
-# bundle exec jekyll build
+#en
+git checkout lang-en
+bundle exec jekyll build
 cp -rf _site _deploy/en
 
 # zh-cn
