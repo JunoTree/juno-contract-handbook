@@ -2,7 +2,7 @@
 layout: default
 title: 安裝
 parent: 基礎操作
-nav_order: 2
+nav_order: 1
 ---
 
 # 安裝

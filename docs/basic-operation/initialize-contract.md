@@ -2,7 +2,7 @@
 layout: default
 title: 初始化合約
 parent: 基礎操作
-nav_order: 4
+nav_order: 5
 ---
 
 # 初始化合約

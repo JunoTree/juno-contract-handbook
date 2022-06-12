@@ -2,7 +2,7 @@
 layout: default
 title: 上傳合約到鏈上
 parent: 基礎操作
-nav_order: 3
+nav_order: 4
 ---
 
 # 上傳合約到鏈上

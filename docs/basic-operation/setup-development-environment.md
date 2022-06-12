@@ -2,7 +2,7 @@
 layout: default
 title: 設置開發環境
 parent: 基礎操作
-nav_order: 1
+nav_order: 3
 ---
 
 # 設置開發環境
