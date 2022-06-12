@@ -2,7 +2,7 @@
 layout: default
 title: 初始化合约
 parent: 基础操作
-nav_order: 4
+nav_order: 5
 ---
 
 # 初始化合约
