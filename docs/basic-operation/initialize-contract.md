@@ -2,7 +2,7 @@
 layout: default
 title: 계약 초기화
 parent: 기본 동작
-nav_order: 4
+nav_order: 5
 ---
 
 # 계약 초기화

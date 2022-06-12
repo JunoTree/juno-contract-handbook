@@ -2,7 +2,7 @@
 layout: default
 title: 개발 환경 설정
 parent: 기본 동작
-nav_order: 1
+nav_order: 3
 ---
 
 # 개발 환경 설정

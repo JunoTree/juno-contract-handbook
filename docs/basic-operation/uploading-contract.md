@@ -2,7 +2,7 @@
 layout: default
 title: 체인에 계약 업로드
 parent: 기본 동작
-nav_order: 3
+nav_order: 4
 ---
 
 # 체인에 계약 업로드
