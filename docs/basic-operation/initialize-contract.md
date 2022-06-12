@@ -2,7 +2,7 @@
 layout: default
 title: 契約を初期化する
 parent: 基本操作
-nav_order: 4
+nav_order: 5
 ---
 
 # 契約を初期化する

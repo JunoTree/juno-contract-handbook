@@ -2,7 +2,7 @@
 layout: default
 title: 開発環境をセットアップする
 parent: 基本操作
-nav_order: 1
+nav_order: 3
 ---
 
 # 開発環境をセットアップする
