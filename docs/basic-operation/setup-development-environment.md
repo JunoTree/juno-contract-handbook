@@ -2,7 +2,7 @@
 layout: default
 title: Set up the development environment
 parent: Basic operation
-nav_order: 1
+nav_order: 3
 ---
 
 # Set up the development environment

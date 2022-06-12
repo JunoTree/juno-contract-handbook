@@ -2,7 +2,7 @@
 layout: default
 title: Uploading the contract to the chain
 parent: Basic operation
-nav_order: 3
+nav_order: 4
 ---
 
 # Uploading the contract to the chain

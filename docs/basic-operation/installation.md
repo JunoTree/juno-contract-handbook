@@ -2,7 +2,7 @@
 layout: default
 title: installation
 parent: Basic operation
-nav_order: 2
+nav_order: 1
 ---
 
 # Installation

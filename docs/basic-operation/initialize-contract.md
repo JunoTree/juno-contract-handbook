@@ -2,7 +2,7 @@
 layout: default
 title: Initializing contract
 parent: Basic operation
-nav_order: 4
+nav_order: 5
 ---
 
 # Initializing contract
